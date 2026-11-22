@@ -1,0 +1,290 @@
+{
+  "apiVersion": 1,
+  "id": "gaming-desktop",
+  "version": 1,
+  "name": "Gaming Desktop",
+  "description": "An example desktop with selectable memory, storage and graphics.",
+  "modelType": "Desktop",
+  "catalogRevision": "demo-hardware-v1",
+  "fixture": true,
+  "validationProfile": {
+    "id": "demo-desktop-complete",
+    "version": 1
+  },
+  "fixedComponents": [
+    {
+      "instanceName": "MainCPU",
+      "productId": "demo-cpu-6",
+      "category": "CPU",
+      "name": "Example Six-Core Processor",
+      "quantity": 1,
+      "specifications": {
+        "socket": "Socket-A",
+        "cores": 6,
+        "powerBudget": {
+          "value": 90,
+          "unit": "W"
+        }
+      }
+    },
+    {
+      "instanceName": "MainBoard",
+      "productId": "demo-board-a",
+      "category": "Motherboard",
+      "name": "Example ATX Motherboard",
+      "quantity": 1,
+      "specifications": {
+        "socket": "Socket-A",
+        "formFactor": "ATX",
+        "memoryType": "DDR5",
+        "memorySlots": 4,
+        "maximumMemory": {
+          "value": 128,
+          "unit": "GiB"
+        },
+        "m2Slots": 2,
+        "graphicsSlots": 1
+      }
+    },
+    {
+      "instanceName": "MainPSU",
+      "productId": "demo-psu-750",
+      "category": "PowerSupply",
+      "name": "Example 750 W Power Supply",
+      "quantity": 1,
+      "specifications": {
+        "formFactor": "ATX",
+        "ratedPower": {
+          "value": 750,
+          "unit": "W"
+        }
+      }
+    },
+    {
+      "instanceName": "MainCase",
+      "productId": "demo-case-atx",
+      "category": "Case",
+      "name": "Example ATX Tower",
+      "quantity": 1,
+      "specifications": {
+        "supportedMotherboardFormFactors": [
+          "ATX",
+          "MicroATX"
+        ],
+        "supportedPSUFormFactors": [
+          "ATX"
+        ],
+        "maximumGPULength": {
+          "value": 340,
+          "unit": "mm"
+        },
+        "maximumCoolerHeight": {
+          "value": 165,
+          "unit": "mm"
+        }
+      }
+    },
+    {
+      "instanceName": "MainCooler",
+      "productId": "demo-cooler-a",
+      "category": "Cooling",
+      "name": "Example Tower CPU Cooler",
+      "quantity": 1,
+      "specifications": {
+        "supportedSockets": [
+          "Socket-A"
+        ],
+        "height": {
+          "value": 155,
+          "unit": "mm"
+        },
+        "supportedCPUPowerBudget": {
+          "value": 150,
+          "unit": "W"
+        }
+      }
+    },
+    {
+      "instanceName": "OperatingSystem",
+      "productId": "demo-os",
+      "category": "OperatingSystem",
+      "name": "Example Desktop OS",
+      "quantity": 1,
+      "specifications": {
+        "architecture": "x86_64"
+      }
+    }
+  ],
+  "configurationGroups": [
+    {
+      "id": "Memory",
+      "label": "Memory",
+      "minSelections": 1,
+      "maxSelections": 1,
+      "defaultSelections": [
+        "Standard"
+      ],
+      "options": [
+        {
+          "id": "Standard",
+          "label": "32 GiB — two 16 GiB modules",
+          "components": [
+            {
+              "instancePrefix": "RAM",
+              "productId": "demo-ram-16",
+              "category": "RAM",
+              "name": "Example 16 GiB DDR5 Module",
+              "quantity": 2,
+              "specifications": {
+                "memoryType": "DDR5",
+                "capacityPerModule": {
+                  "value": 16,
+                  "unit": "GiB"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "Large",
+          "label": "64 GiB — two 32 GiB modules",
+          "components": [
+            {
+              "instancePrefix": "RAM",
+              "productId": "demo-ram-32",
+              "category": "RAM",
+              "name": "Example 32 GiB DDR5 Module",
+              "quantity": 2,
+              "specifications": {
+                "memoryType": "DDR5",
+                "capacityPerModule": {
+                  "value": 32,
+                  "unit": "GiB"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "Storage",
+      "label": "Primary storage",
+      "minSelections": 1,
+      "maxSelections": 1,
+      "defaultSelections": [
+        "Standard"
+      ],
+      "options": [
+        {
+          "id": "Standard",
+          "label": "1 TB NVMe SSD",
+          "components": [
+            {
+              "instancePrefix": "SSD",
+              "productId": "demo-ssd-1",
+              "category": "Storage",
+              "name": "Example 1 TB NVMe SSD",
+              "quantity": 1,
+              "specifications": {
+                "interface": "NVMe",
+                "formFactor": "M.2",
+                "capacity": {
+                  "value": 1,
+                  "unit": "TB"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "Large",
+          "label": "2 TB NVMe SSD",
+          "components": [
+            {
+              "instancePrefix": "SSD",
+              "productId": "demo-ssd-2",
+              "category": "Storage",
+              "name": "Example 2 TB NVMe SSD",
+              "quantity": 1,
+              "specifications": {
+                "interface": "NVMe",
+                "formFactor": "M.2",
+                "capacity": {
+                  "value": 2,
+                  "unit": "TB"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "Graphics",
+      "label": "Graphics card",
+      "minSelections": 1,
+      "maxSelections": 1,
+      "defaultSelections": [
+        "Standard"
+      ],
+      "options": [
+        {
+          "id": "Standard",
+          "label": "Example Graphics 8",
+          "components": [
+            {
+              "instancePrefix": "GPU",
+              "productId": "demo-gpu-8",
+              "category": "GPU",
+              "name": "Example Graphics 8",
+              "quantity": 1,
+              "specifications": {
+                "videoMemory": {
+                  "value": 8,
+                  "unit": "GiB"
+                },
+                "length": {
+                  "value": 250,
+                  "unit": "mm"
+                },
+                "powerBudget": {
+                  "value": 160,
+                  "unit": "W"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "Performance",
+          "label": "Example Graphics 12",
+          "components": [
+            {
+              "instancePrefix": "GPU",
+              "productId": "demo-gpu-12",
+              "category": "GPU",
+              "name": "Example Graphics 12",
+              "quantity": 1,
+              "specifications": {
+                "videoMemory": {
+                  "value": 12,
+                  "unit": "GiB"
+                },
+                "length": {
+                  "value": 300,
+                  "unit": "mm"
+                },
+                "powerBudget": {
+                  "value": 240,
+                  "unit": "W"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "validationRequired": true
+}
